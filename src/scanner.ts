@@ -134,6 +134,13 @@ function scanFileContent(
   // Scan each violation category
   for (const [key, catConfig] of Object.entries(config.violations)) {
     if (!catConfig.enabled) continue;
+    
+    // Check if this file should be excluded from this violation category
+    if (catConfig.excludePaths?.some((excludePath) => relativePath.includes(excludePath))) {
+      allViolations[key] = [];
+      continue; // Skip this violation category for this file
+    }
+    
     try {
       // Validate regex pattern before using
       new RegExp(catConfig.pattern, "g");

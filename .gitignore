@@ -3,3 +3,6 @@ dist/
 *.tgz
 ds-coverage-report.json
 ds-coverage-dashboard.html
+
+# cursor
+.cursor/

@@ -27,6 +27,12 @@ export interface ViolationCategoryConfig {
    * @default false
    */
   deduplicateByLine?: boolean;
+  /**
+   * Path patterns to exclude from this violation category (substring match).
+   * Files matching any pattern will skip scanning for this category.
+   * @example ["components/ui/"] - excludes all files under components/ui/
+   */
+  excludePaths?: string[];
 }
 
 export interface ComponentApiConfig {
